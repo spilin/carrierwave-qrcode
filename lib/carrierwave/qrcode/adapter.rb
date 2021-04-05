@@ -12,7 +12,6 @@ module Carrierwave
 
           qrcode_value = options[:column] ? self.send(options[:column]) : value&.strip
           data = RQRCode::QRCode.new(qrcode_value).as_png(size: options[:size] || 432).to_s
-          warn 'A'*100
           super(FileIO.new("#{qrcode_value}.png", data))
         end
 
