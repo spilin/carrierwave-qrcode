@@ -17,7 +17,7 @@ module Carrierwave
 
     def generate_qrcode(size)
       qrcode_value = self.model.send(self.model.class.uploader_option(self.mounted_as, :column))
-      data = RQRCode::QRCode.new(qrcode_value).as_png(size: size)
+      data = RQRCode::QRCode.new(qrcode_value).as_png(size: size, border_modules: 0)
       IO.binwrite(current_path, data.to_s)
     end
 
